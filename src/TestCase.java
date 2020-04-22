@@ -223,7 +223,7 @@ public class TestCase {
     }
 
     @Test
-    public void PostearTwitter() throws InterruptedException {
+    public void EscribirTwitter() throws InterruptedException {
 
         //region LEVANTAR NAVEGADOR
 
