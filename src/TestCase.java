@@ -1,5 +1,6 @@
 package src;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,30 +16,28 @@ import java.util.concurrent.TimeUnit;
 
 public class TestCase {
 
+    //variable driver
+    WebDriver driver = null;
+    WebDriverWait wait = null;
+
 
     @Before
     public void before() {
+
+        //decirle donde esta el chromedriver
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+
+        //levantar navegador
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, 60);
+
+        //maximizar el navegador
+        driver.manage().window().maximize();
 
     }
 
     @Test
     public void Registro() throws InterruptedException {
-
-        // region LEVANTAR LAVEGARDOR
-        //variable driver
-        WebDriver driver = null;
-
-        //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
-        //levantar navegador
-        driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        //maximizar el navegador
-        driver.manage().window().maximize();
-
-        //endregion
 
         // region REGISTRO
 
@@ -69,31 +68,10 @@ public class TestCase {
         Alert alert = driver.switchTo().alert();
         alert.accept();
 
-        //cerrar navegador
-        driver.close();
-
-
     }
 
     @Test
     public void Login() throws InterruptedException {
-
-        //region LEVANTAR EL NAVEGADOR
-
-        //variable driver
-        WebDriver driver = null;
-
-        //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
-        //levantar navegador
-        driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        //maximizar el navegador
-        driver.manage().window().maximize();
-
-        //endregion
 
         //region LOGIN
 
@@ -141,30 +119,10 @@ public class TestCase {
 
         //endregion
 
-        //cerrar navegador
-        driver.close();
-
     }
 
     @Test
     public void BuscarMonitor() throws InterruptedException {
-
-       //region LEVANTAR NEVEGADOR
-
-        //variable driver
-        WebDriver driver;
-
-        //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
-        //levantar navegador
-        driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        //maximizar el navegador
-        driver.manage().window().maximize();
-
-        //endregion
 
         //region LOGIN
 
@@ -216,115 +174,16 @@ public class TestCase {
 
         //endregion
 
-        //cerrar navegador
-        driver.close();
-
-
-    }
-
-    @Test
-    public void EscribirTwitter() throws InterruptedException {
-
-        //region LEVANTAR NAVEGADOR
-
-        //variable driver
-        WebDriver driver;
-
-        //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
-        //levantar navegador
-        driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        //maximizar el navegador
-        driver.manage().window().maximize();
-
-        //endregion
-
-        //region LOGEARSE EN TWITTER
-
-        //abrir Twitter
-        driver.get("https://twitter.com/explore");
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-        //click a Iniciar secion
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div[2]/div[1]/div/div[2]/div[1]/div[1]/a/div/span/span")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div[2]/div[1]/div/div[2]/div[1]/div[1]/a/div/span/span")).click();
-
-        //escribir Teléfono, correo o usuario
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[1]/label/div/div[2]/div/input")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[1]/label/div/div[2]/div/input")).sendKeys("ycuberos93@gmail.com");
-
-        //escribir contraseña
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[2]/label/div/div[2]/div/input")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[2]/label/div/div[2]/div/input")).sendKeys("yacr21284903");
-
-        //click a boton Iniciar sesión
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[3]/div/div/span/span")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/form/div/div[3]/div/div/span/span")).click();
-
-        //endregion
-
-        //region POSTEAR
-
-        //click a Inicio
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div/div/div/div[1]/div[2]/nav/a[1]/div")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div/div/div/div[1]/div[2]/nav/a[1]/div")).click();
-
-        //escribir en Muro ¿Que estas pensando?
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[1]/div/div/div/div/div/div/div/div/div/div[1]/div/div/div/div[2]/div/div/div/div")).sendKeys("¡Feliz inicio de semana!");
-
-        //click a Twittear
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div/span/span")));
-        driver.findElement(By.xpath("/html/body/div/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div/div/span/span")).click();
-
-        //click en Perfil
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div/div/div/div/div[2]/nav/a[7]")));
-        driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/header/div/div/div/div/div[2]/nav/a[7]")).click();
-
-        //sacar texto de la app (Feliz viernes)
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/section/div/div/div/div[1]/div/div/div/article/div/div[2]/div[2]/div[2]/div[1]/div/span")));
-        String Feliziniciodesemana = driver.findElement(By.xpath("//*[@id=\"react-root\"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/section/div/div/div/div[1]/div/div/div/article/div/div[2]/div[2]/div[2]/div[1]/div/span")).getText();
-
-        //validar que sea igual (Feliz viernes)
-        Assert.assertEquals(Feliziniciodesemana, "¡Feliz inicio de semana!");
-
-        //endregion
-
-        //cerrar navegador
-        driver.close();
-
-
     }
 
     @Test
     public void Compra() throws InterruptedException {
 
-        //region LEVANTASR NAVEGADOR
-
-        //variable driver
-        WebDriver driver;
-
-        //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
-        //levantar navegador
-        driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-
-        //maximizar el navegador
-        driver.manage().window().maximize();
+        //region LOGIN
 
         //abrir demoblaze
         driver.get("https://www.demoblaze.com/#");
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-
-        //endregion
-
-        //region LOGIN
 
         //click a login
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login2\"]")));
@@ -362,7 +221,7 @@ public class TestCase {
         driver.findElement(By.xpath("//*[@id=\"tbodyid\"]/div[3]/div/div/h4/a")).click();
 
         //sacar texto de la app
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("\"//*[@id=\\\"tbodyid\\\"]/h2\"")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tbodyid\"]/h2")));
         String nombredeltelefono = driver.findElement(By.xpath("//*[@id=\"tbodyid\"]/h2")).getText();
 
         //click a Add to cart
@@ -370,6 +229,7 @@ public class TestCase {
         driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div[2]/div/a")).click();
 
         //ALERT
+        wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = driver.switchTo().alert();
         alert.accept();
 
@@ -442,11 +302,13 @@ public class TestCase {
 
         //endregion
 
+    }
+
+    @After
+    public void after(){
 
         //cerrar navegador
         driver.close();
-
-
     }
 
 }
