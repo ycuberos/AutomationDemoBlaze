@@ -20,26 +20,26 @@
 - Ingresar a http://dbankdemo.com/
 - Click en sign up
 - Seleccionar title
-- ingresar first name XXX
-- ingresar last name XXX
+- ingresar first name YESSICA
+- ingresar last name CUBEROS
 - Seleccionar genero
 - ingresar fecha de nacimiento 02/06/2020
 - ingresar social security number 099-56-898
-- ingresar email XXX
-- ingresar password XXX
-- ingresar password de nuevo XXX
+- ingresar email ycuberos@gmail.com
+- Ingresar password Ycuberos93.
+- Ingresar password de nuevo Ycuberos93.
 - Click en next
-- ingresar address Charcas 5647
-- Ingresar localidad palermo
+- Cngresar address Charcas 5647
+- Ingresar localidad Palermo
 - Ingresar region CABA
 - Ingresar postal code 1010
 - ingresar country Argentina
 - Ingresar phone home (547) 392-5647
 - Ingresar phone mobile (547) 392-5999
 - Ingresar phone work (547) 392-5677
-- aceptar los terminos y condiciones
-- click en registrar
-- validar el mensaje "Registration Successful. Please Login."
+- Aceptar los terminos y condiciones
+- Click en registrar
+- Validar el mensaje "Registration Successful. Please Login."
 
 
 
