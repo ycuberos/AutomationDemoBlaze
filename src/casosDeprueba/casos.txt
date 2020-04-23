@@ -1,0 +1,45 @@
+#Automatizar los siguientes casos de prueba
+
+1.- Hacer una compra de un telefono
+
+- Ingresar a https://www.demoblaze.com/cart.html
+- Click en login
+- Ingresar el usuario XXXX
+- Ingresar la contraseña XXXX
+- Seleccionar el boton ingresar
+- Ir a la seccion telefonos
+- Seleccionar un telefono de la lista
+- Agregar el telefono al carrito
+- Click en carrito
+- Mostrar en pantalla el precio y el nombre del telefono
+- eliminar del carrito el telefono
+- cerrar sesion
+
+2.- Registro exitoso
+
+- Ingresar a http://dbankdemo.com/
+- Click en sign up
+- Seleccionar title
+- ingresar first name XXX
+- ingresar last name XXX
+- Seleccionar genero
+- ingresar fecha de nacimiento 02/06/2020
+- ingresar social security number 099-56-898
+- ingresar email XXX
+- ingresar password XXX
+- ingresar password de nuevo XXX
+- Click en next
+- ingresar address Charcas 5647
+- Ingresar localidad palermo
+- Ingresar region CABA
+- Ingresar postal code 1010
+- ingresar country Argentina
+- Ingresar phone home (547) 392-5647
+- Ingresar phone mobile (547) 392-5999
+- Ingresar phone work (547) 392-5677
+- aceptar los terminos y condiciones
+- click en registrar
+- validar el mensaje "Registration Successful. Please Login."
+
+
+
