@@ -10,8 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class TestCase {
@@ -19,13 +21,14 @@ public class TestCase {
     //variable driver
     WebDriver driver = null;
     WebDriverWait wait = null;
+    int random;
 
 
     @Before
     public void before() {
 
         //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
         //levantar navegador
         driver = new ChromeDriver();
@@ -34,6 +37,10 @@ public class TestCase {
         //maximizar el navegador
         driver.manage().window().maximize();
 
+        Random r = new Random();
+        int low = 1000;
+        int high = 9999;
+        random = r.nextInt(high-low) + low;
     }
 
     @Test
@@ -69,7 +76,6 @@ public class TestCase {
         alert.accept();
 
     }
-
     @Test
     public void Login() throws InterruptedException {
 
@@ -304,8 +310,106 @@ public class TestCase {
 
     }
 
+    @Test
+    public void RegistroDbank() throws InterruptedException {
+
+        driver.get("http://dbankdemo.com/login");
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+        //click a Sing up here
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div[2]/form/div[4]/p/a")));
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/form/div[4]/p/a")).click();
+
+        //seleccionar a Mr, Ms o Mrs
+        Select dropdown = new Select(driver.findElement(By.id("title")));
+        dropdown.selectByVisibleText("Ms.");
+
+        //escribir Firt name
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"firstName\"]")));
+        driver.findElement(By.xpath("//*[@id=\"firstName\"]")).sendKeys("YESSICA");
+
+        //escribir Last name
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"lastName\"]")));
+        driver.findElement(By.xpath("//*[@id=\"lastName\"]")).sendKeys("CUBEROS");
+
+        //click a Gender
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div[2]/form/div[5]/label[2]/input")));
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/form/div[5]/label[2]/input")).click();
+
+        //escribir date of birth
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"dob\"]")));
+        driver.findElement(By.xpath("//*[@id=\"dob\"]")).sendKeys("01/09/1993");
+
+        //escribir social security number
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ssn\"]")));
+        driver.findElement(By.xpath("//*[@id=\"ssn\"]")).sendKeys("099-56-" + random);
+
+        //escribir e-mail address
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"emailAddress\"]")));
+        driver.findElement(By.xpath("//*[@id=\"emailAddress\"]")).sendKeys("ycuberos" + random + "@gmail.com");
+
+        //escribir password
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"password\"]")));
+        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("Ycuberos93.");
+
+        //escribir password confirm
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"confirmPassword\"]")));
+        driver.findElement(By.xpath("//*[@id=\"confirmPassword\"]")).sendKeys("Ycuberos93.");
+
+        //click a next
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div[2]/form/button")));
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/form/button")).click();
+
+        //escribir address
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"address\"]")));
+        driver.findElement(By.xpath("//*[@id=\"address\"]")).sendKeys("Charcas 5647");
+
+        //escribir locality
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"locality\"]")));
+        driver.findElement(By.xpath("//*[@id=\"locality\"]")).sendKeys("Palermo");
+
+        //escribir region
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"region\"]")));
+        driver.findElement(By.xpath("//*[@id=\"region\"]")).sendKeys("CABA");
+
+        //escribir postal code
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"postalCode\"]")));
+        driver.findElement(By.xpath("//*[@id=\"postalCode\"]")).sendKeys("1010");
+
+        //escribir postal country
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"country\"]")));
+        driver.findElement(By.xpath("//*[@id=\"country\"]")).sendKeys("Argentina");
+
+        //escribir home phone
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"homePhone\"]")));
+        driver.findElement(By.xpath("//*[@id=\"homePhone\"]")).sendKeys("(547) 392-5647");
+
+        //escribir mobile phone
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mobilePhone\"]")));
+        driver.findElement(By.xpath("//*[@id=\"mobilePhone\"]")).sendKeys("(547) 392-5999");
+
+        //escribir work phone
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"workPhone\"]")));
+        driver.findElement(By.xpath("//*[@id=\"workPhone\"]")).sendKeys("(547) 392-5677");
+
+        //click a agree the terms and policy
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"agree-terms\"]")));
+        driver.findElement(By.xpath("//*[@id=\"agree-terms\"]")).click();
+
+        //click a register
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div[2]/form/button")));
+        driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/form/button")).click();
+
+        //sacar texto de la app
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div[2]/div/span[2]")));
+        String validarlogin = driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div/span[2]")).getText();
+
+        //validar que sea igual
+        Assert.assertEquals(validarlogin, "Registration Successful. Please Login.");
+    }
+
     @After
-    public void after(){
+    public void after() {
 
         //cerrar navegador
         driver.close();
