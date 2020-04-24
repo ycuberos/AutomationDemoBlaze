@@ -41,5 +41,33 @@
 - Click en registrar *
 - Validar el mensaje "Registration Successful. Please Login."*
 
+3.- New Checking
 
+* Ingresar a http://dbankdemo.com/
+* escribir Username: miguel@gmail.com
+* Escribir Password: Miguel11.*
+* Click a Sing in
+* Click a checking
+* Click a new checking
+* Seleccionar el tipo de cuenta (Standard Checking)
+* Seleccionar la propiedad de la cuenta (Individual)
+* Escribir nombre de la cuenta (Miguel CC)
+* Agregar monto: $100
+* Click a submit
+* Validar cuenta (Miguel CC) y Balance ($100)
+
+4.- New Saving
+
+Ingresar a http://dbankdemo.com/
+* escribir Username: miguel@gmail.com
+* Escribir Password: Miguel11.*
+* Click a Sing in
+* Click a Savings
+* Click a new Savings
+* Seleccionar el tipo de cuenta (Money Market)
+* Seleccionar la propiedad de la cuenta (Joint)
+* Escribir nombre de la cuenta (Miguel CA)
+* Agregar monto: $100
+* Click a submit
+* Validar cuenta (Miguel CA) y Balance ($100)
 
