@@ -1,9 +1,9 @@
-package src;
+package src.tests.caculadora;
 
 
 import org.junit.Test;
 
-public class yeyeTest {
+public class calculadora {
 
 
     @Test

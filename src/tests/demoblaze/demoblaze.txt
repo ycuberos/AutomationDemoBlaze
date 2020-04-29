@@ -1,0 +1,17 @@
+#Automatizar los siguientes casos de prueba
+
+1.- Hacer una compra de un telefono
+
+- Ingresar a https://www.demoblaze.com/cart.html
+- Click en login
+- Ingresar el usuario XXXX
+- Ingresar la contraseña XXXX
+- Seleccionar el boton ingresar
+- Ir a la seccion telefonos
+- Seleccionar un telefono de la lista
+- Agregar el telefono al carrito
+- Click en carrito
+- Mostrar en pantalla el precio y el nombre del telefono
+- eliminar del carrito el telefono
+- cerrar sesion
+
