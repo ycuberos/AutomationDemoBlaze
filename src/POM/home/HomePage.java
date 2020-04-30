@@ -8,11 +8,11 @@ public class HomePage {
         return By.xpath("//*[@id='right-panel']/div[1]/div[2]/div/div/ol/li");
     }
 
-    public By checking(){
+    public By bottonchecking(){
         return By.xpath("//*[@id='main-menu']/ul/li[2]/a");
     }
 
-    public  By newChecking(){
+    public  By bottonnewChecking(){
         return By.xpath("//*[@id='main-menu']/ul/li[2]/ul/li[2]/a");
     }
 

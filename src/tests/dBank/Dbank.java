@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import src.POM.checking.CheckingPage;
 import src.POM.home.HomePage;
 import src.POM.login.LoginPage;
 import src.POM.registro.RegistroPage;
@@ -28,7 +29,7 @@ public class Dbank {
     public void before() {
 
         //decirle donde esta el chromedriver
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
 
         //levantar navegador
         driver = new ChromeDriver();
@@ -45,6 +46,8 @@ public class Dbank {
 
     @Test
     public void RegistroDbank() throws InterruptedException {
+
+        //region PRIMERA PAGINA
 
         RegistroPage registroPage = new RegistroPage();
         LoginPage loginPage = new LoginPage();
@@ -96,7 +99,9 @@ public class Dbank {
         wait.until(ExpectedConditions.visibilityOfElementLocated(registroPage.ButtomNext()));
         driver.findElement(registroPage.ButtomNext()).click();
 
-        // SEGUNDA PAGINA
+        //endregion
+
+        //region SEGUNDA PAGINA
 
         //escribir address
         wait.until(ExpectedConditions.visibilityOfElementLocated(registroPage.imputAdress()));
@@ -144,6 +149,8 @@ public class Dbank {
 
         //validar que sea igual
         Assert.assertEquals(validarlogin, "Registration Successful. Please Login.");
+
+        //endregion
     }
 
     @Test
@@ -180,6 +187,7 @@ public class Dbank {
 
         LoginPage loginPage = new LoginPage();
         HomePage homePage = new HomePage();
+        CheckingPage checkingPage = new CheckingPage();
 
         driver.get("http://dbankdemo.com/login");
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -203,8 +211,47 @@ public class Dbank {
         //validar que sea igual
         Assert.assertEquals(validarlogin, "Welcome Yessica");
 
+        //click a checking
+        wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.bottonchecking()));
+        driver.findElement(homePage.bottonchecking()).click();
 
+        //click a newchecking
+        wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.bottonnewChecking()));
+        driver.findElement(homePage.bottonnewChecking()).click();
 
+        //seleccionar tipo de cuenta
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.checkboxStandardChecking()));
+        driver.findElement(checkingPage.checkboxStandardChecking()).click();
+
+        //seleccionar propiedad de la cuenta
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.checkboxSelectAccountOwnership()));
+        driver.findElement(checkingPage.checkboxSelectAccountOwnership()).click();
+
+        //escribir nombre de la cuenta
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.inputAccountName()));
+        driver.findElement(checkingPage.inputAccountName()).sendKeys("Yessica CC");
+
+        //escribir monto
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.inputInitialDepositAmount()));
+        driver.findElement(checkingPage.inputInitialDepositAmount()).sendKeys("100");
+
+        //click submit
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.buttonSubmit()));
+        driver.findElement(checkingPage.buttonSubmit()).click();
+
+        //sacar texto de la app
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.checkingTextValidation()));
+        String validartexto = driver.findElement(checkingPage.checkingTextValidation()).getText();
+
+        //validar que sea igual
+        Assert.assertEquals(validartexto, "Yessica CC");
+
+        //sacar importe de la app
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkingPage.checkingAmountValidation()));
+        String validarmonto = driver.findElement(checkingPage.checkingAmountValidation()).getText();
+
+        //validar que sea igual
+        Assert.assertEquals(validarmonto, "Balance: $100.00");
 
     }
 
